@@ -1,5 +1,6 @@
 This is modified version for Ocrave.
 This depends optim package.
+You have to run CompileLib.m in matlab folder first.
 
 ### G1 and G2 fitting with clothoids, spline of clothods, circle arc and biarc
 

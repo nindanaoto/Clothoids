@@ -9,6 +9,7 @@ Usage.pdf
 *.blg
 *.spl
 *.o
+*.mex
 cmake
 build
 lib
