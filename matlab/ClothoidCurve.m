@@ -166,6 +166,11 @@ classdef ClothoidCurve < CurveBase
       plot( X, Y, varargin{:} );
     end
     % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    function point = out( self, npts)
+      S = self.optimized_sample( npts, pi/180, 0 );
+      point = ClothoidCurveMexWrapper( 'eval', self.objectHandle, S );
+    end
+    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     function plot_offs( self, offs, npts, varargin )
       S = self.optimized_sample( npts, pi/180, offs );
       [ X, Y ] = ClothoidCurveMexWrapper( 'eval', self.objectHandle, S, offs );

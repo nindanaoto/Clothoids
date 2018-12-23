@@ -165,6 +165,14 @@ classdef ClothoidList < CurveBase
       end
     end
     % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    function point=out( self, npts )
+     point=[];
+      for k=1:self.numSegment()
+        C = self.get(k);
+        point=[point C.out(npts)];
+      end
+    end
+    % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     function plot_offs( self, offs, npts, varargin )
       if nargin > 3
         fmt1 = varargin{1} ;

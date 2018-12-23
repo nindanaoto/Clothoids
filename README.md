@@ -1,4 +1,5 @@
-Clothoids [![Build Status](https://travis-ci.org/ebertolazzi/Clothoids.svg?branch=master)](https://travis-ci.org/ebertolazzi/Clothoids)
+This is modified version for Ocrave.
+This depends optim package.
 
 ### G1 and G2 fitting with clothoids, spline of clothods, circle arc and biarc
 

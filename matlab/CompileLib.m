@@ -41,19 +41,19 @@ for k=1:length(LIB_NAMES)
   end  
 end
 
-[~,mexLoaded] = inmem('-completenames') ;
-
 disp('---------------------------------------------------------');
 
 CMD = 'mex -c -largeArrayDims -I../src ' ;
-if isunix
-  if ismac
-    CMD = [CMD, 'CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0" '] ;
-  else
-    CMD = [CMD, 'CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0" '] ;
-  end
-elseif ispc
-end
+%This may be not supported in octave.
+%if isunix
+%  if ismac
+%    CMD = [CMD, 'CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0" '] ;
+%  else
+%    CMD = [CMD, 'CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0" '] ;
+%  end
+%elseif ispc
+%end
+setenv('CXXFLAGS','-Wall -O2 -g0');
 CMD = [ CMD, LIB_SRCS ] ;
 
 disp(CMD);
@@ -70,14 +70,15 @@ for k=1:length(NAMES)
   CMD = [ 'mex -I../src -output ../matlab/', N ] ;
   CMD = [ CMD, ' -largeArrayDims ../src_mex/mex_', N ] ;
   CMD = [ CMD, '.cc ', LIB_OBJS ] ;
-  if isunix
-    if ismac
-      CMD = [CMD, ' -lstdc++ CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0"'] ;
-    else
-      CMD = [CMD, ' -lstdc++ CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0"'] ;
-    end
-  elseif ispc
-  end
+  %This may be not supported in octave.
+  %if isunix
+  %  if ismac
+  %    CMD = [CMD, ' -lstdc++ CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0"'] ;
+  %  else
+  %    CMD = [CMD, ' -lstdc++ CXXFLAGS="\$CXXFLAGS -Wall -O2 -g0"'] ;
+  %  end
+  %elseif ispc
+  %end
   disp(CMD);
   eval(CMD);
 end
